@@ -1,0 +1,53 @@
+// Game Data (basic game state)
+let gameState = {
+  health: 100,
+  inventory: [],
+  currentLocation: "start"
+};
+
+// Mock Login Functionality
+const loginForm = document.getElementById("login-form");
+loginForm.addEventListener("submit", function(e) {
+  e.preventDefault();
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+
+  if (username === "player" && password === "rpg123") {
+    document.getElementById("login-container").style.display = "none";
+    document.getElementById("game-container").style.display = "block";
+    startGame();
+  } else {
+    document.getElementById("error-msg").textContent = "Invalid login credentials!";
+  }
+});
+
+// Start Game
+function startGame() {
+  updateStats();
+  showText("You wake up in a mysterious forest. What will you do?");
+}
+
+// Handle Choices
+function choose(choice) {
+  if (choice === 1) {
+    showText("You head North and encounter a wild beast!");
+    gameState.health -= 20;
+  } else if (choice === 2) {
+    showText("You head South and find a healing herb.");
+    gameState.health += 10;
+  } else if (choice === 3) {
+    showText("Your inventory is empty.");
+  }
+  updateStats();
+}
+
+// Update Player Stats
+function updateStats() {
+  document.getElementById("health").textContent = gameState.health;
+  document.getElementById("inventory").textContent = gameState.inventory.join(", ") || "None";
+}
+
+// Show Game Text
+function showText(text) {
+  document.getElementById("game-text").textContent = text;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text-Based RPG</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Login Section -->
+  <div class="login-container" id="login-container">
+    <h1>Welcome to the RPG Adventure</h1>
+    <form id="login-form">
+      <input type="text" id="username" placeholder="Enter username" required>
+      <input type="password" id="password" placeholder="Enter password" required>
+      <button type="submit">Login</button>
+    </form>
+    <p id="error-msg" class="error"></p>
+  </div>
+
+  <!-- Game Section (Hidden initially) -->
+  <div class="game-container" id="game-container" style="display:none;">
+    <h2 id="game-title">Text RPG Adventure</h2>
+    <div class="stats" id="stats">
+      <p>Health: <span id="health">100</span></p>
+      <p>Inventory: <span id="inventory">None</span></p>
+    </div>
+    <div id="game-text">Welcome to your adventure. What will you do?</div>
+    <div class="choices" id="choices">
+      <button class="choice-btn" onclick="choose(1)">Go North</button>
+      <button class="choice-btn" onclick="choose(2)">Go South</button>
+      <button class="choice-btn" onclick="choose(3)">Check Inventory</button>
+    </div>
+  </div>
+
+  <!-- Link to JavaScript file -->
+  <script src="js/game.js"></script>
+</body>
+</html>
